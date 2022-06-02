@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Hello HomeController!
+{% endblock %}
+
+{% block body %}
+<section class="header-custom">
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+      <input class="form-control me-2" type="search" placeholder="Mot clé " aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
+</nav>
+</section>
+
+<div class="accroche">
+<h1>Le titre de l'accroche est là</h1>
+    <p>Lorem ipsum dolor, sit amet </p>
+</div>
+
+<div class="who-are-you">
+<h3>Vous êtes :</h3>
+    <span class="i-am">Chercheur/use de compétences</span>
+    <span class="i-am">Offreur/use de compétences</span>
+</div>
+
+
+<div class="entreprise-a-la-une">
+<div><img src="{{asset('images/credit_agricole.png')}}" alt="" class="log-company img-fluid"> </div>
+<div> <img src="{{asset('images/Adidas_Logo.svg.png')}}" alt="" class="log-company img-fluid"> </div>
+<div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
+<div> <img src="{{asset('images/logo-allianz-1.jpg')}}" alt="" class="log-company img-fluid"> </div>
+<div> <img src="{{asset('images/logo-microsoft.png')}}" alt="" class="log-company img-fluid"> </div>
+<div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
+</div>{# .entreprise-a-la-une #}
+
+<section>
+<div class="job-a-la-une row">
+<div class="card-job col-md-4">Développeur Front-End</div>
+<div class="card-job col-md-4">Développeur Back-End</div>
+<div class="card-job col-md-4">Coach Agile</div>
+<div class="card-job col-md-4">Administreur de Réseaux</div>
+<div class="card-job col-md-4">UI Designer</div>
+<div class="card-job col-md-4">Product Manager</div>
+    <button type="button" class="btn btn-secondary d-grid gap-2 d-md-block ">Secondar</button>
+        </div>
+            </section>
+<section>
+<div class="categorie-metier">
+<div class="job-family">Tech</div>
+<div class="job-family">insdustrie</div>
+<div class="job-family">Santé</div>
+<div class="job-family">Digital</div>
+<div class="job-family">Bussines</div>
+<div class="job-family">Data</div>
+<div class="job-family">Image - son</div>
+<div class="job-family"> Communication</div>
+<div class="job-family">Coaching</div>
+</div>
+</section>
+
+<section>
+<div class="job-par-ville">
+<div class="city-location">Paris</div>
+<div class="city-location">Lyon</div>
+<div class="city-location">Marseille</div>
+<div class="city-location">Lille</div>
+<div class="city-location">Toulouse</div>
+<div class="city-location">nantes</div>
+</div>
+</section>
+
+<section>
+
+    <h1>Sécurité et sérénité pour vous mission</h1>
+<div class="why-skbnk">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+</div> {# why-skbnk #}
+
+</section>
+
+{% endblock %}
+        

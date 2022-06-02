@@ -1,0 +1,63 @@
+.nav-link{
+    color: black;
+    font-size: 2rem;
+}
+
+.header-custom{
+    margin-top: 100px;
+    background-color: antiquewhite;
+    
+}
+.accroche{
+    background-color: aquamarine;
+    min-height: 200px;
+}
+.log-company{
+    max-height: 50px;
+    width: auto;
+    margin: 30px;
+}.entreprise-a-la-une{
+display:flex;
+background-color: rgb(198, 214, 229);
+min-height: 200Px;
+}.job-a-la-une{
+    background-color: rgb(208, 229, 187);
+    // height: 300px;
+    display: flex;
+}.card-job{
+    font-size: 1.5rem;
+}.categorie-metier{
+    background-color: beige;
+    font-size: 1.5rem;
+    flex-direction: row;
+}.job-par-ville{
+    background-color: aquamarine;
+}.who-are-you{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.i-am{
+    background-color: rgb(205, 146, 146);
+    height: 50px;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    margin: 20px;
+    text-align: center;
+}
+
+
+
+
+
+footer{
+    // position: absolute;
+    margin-bottom: 0;
+    // bottom: 0;
+    width: 100%;
+    background-color: rgb(44, 41, 41);
+    text-align: center;
+    color: white;
+}
+
