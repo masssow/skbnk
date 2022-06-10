@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Hello HomeController!
+   Skbnk - Home
 {% endblock %}
 
 {% block body %}
@@ -25,8 +25,8 @@
 
 <div class="who-are-you">
 <h3>Vous êtes :</h3>
-    <span class="i-am">Chercheur/use de compétences</span>
-    <span class="i-am">Offreur/use de compétences</span>
+    <span class="i-am"><a href="{{path('app_company')}}">Chercheur/use de compétences</a></span>
+    <span class="i-am"><a href="{{path('app_competent')}}">Offreur/use de compétences</a></span>
 </div>
 
 

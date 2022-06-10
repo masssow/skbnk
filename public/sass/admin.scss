@@ -1,10 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Noto+Sans:wght@300&family=Raleway:wght@300&display=swap');
+
+$primary-color:#94e0e5;
+$base-color:#130160;
+$secondary-color:#fc9d2f;
+$back-color:#dae5da;
+$font-color:#150B3D;
+*{
+    font-size: 1.2rem;
+    font-family:'DM Sans', sans-serif ;
+    color: $font-color;
+}
+a{
+    text-decoration: none;
+    color: black;
+
+}
+body{
+    min-height: 90vh;
+    position: relative;
+}
 .nav-link{
     color: black;
     font-size: 2rem;
 }
-
+.navbar{
+    position: relative;
+}
+ul{
+    list-style: none;
+}
+//======== Home==========
 .header-custom{
-    margin-top: 100px;
+    // margin-top: 100px;
     background-color: antiquewhite;
     
 }
@@ -47,14 +74,87 @@ min-height: 200Px;
     text-align: center;
 }
 
+// ====== company ========
+
+.container.inner{
+    background-color: rgb(170, 209, 196);
+}
+.price{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    border: 0;
+    vertical-align: baseline;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+    font-size: 2rem;
+    margin: 0 auto;
+    padding: 70px 30px;
+    text-align: center;
+    background: url(../images/commercial-label.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.text-publi{
+    font-size: 2rem;
+}
+.card-offer{
+    background-color: rgb(212, 255, 241);
+    border-radius: 15px;
+    padding: 15px;
+}.title-offer{
+    background-color: rgb(82, 82, 221);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.list-offer{
+    display: flex;
+}
+.description-offer
+{
+    flex-direction: column;
+}
+.call-center{
+    background-color: rgb(255, 242, 244);
+    border-radius: 40px;
+    margin: 40px;
+    box-shadow: 5px 5px 5px rgb(192, 192, 192);
+}
+.help{
+    background-color:rgb(244, 255, 255);
+}
+b{
+text-align: center;
+}
+.button{
+    background-color: aqua;
+    color: whitesmoke;
+    border-radius: 5px;
+    
+}.account-company{
+    background-color: rgb(212, 235, 255);
+    border-radius: 10px;
+    margin: 30px;
+}
+.account{
+    background-color: rgb(243, 234, 234);
+    border-radius: 10px;
+    margin: 30px;
+
+}
 
 
+// ===== competent ============
 
 
 footer{
     // position: absolute;
-    margin-bottom: 0;
-    // bottom: 0;
+    // margin-bottom: 0;
+    bottom: 0;
     width: 100%;
     background-color: rgb(44, 41, 41);
     text-align: center;

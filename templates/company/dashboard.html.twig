@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompanyDashboardController!{% endblock %}
+
+{% block body %}
+<div class="container header-account-worker">
+    <div class="row">
+            <div class="col-md-12">
+                <h3>confirme votre disponibilité</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <span class="button"><a href="">Confirmer disponibilité</a></span>
+            </div>{# .col-md-12 #}
+
+    </div>
+</div>{# .header-account-worker #}
+<div class="row">
+    <div class="col-md-2 info-side ">
+        <div class="info-perso account-company">
+            <b>Vos informations</b>
+            <p>Metier principal</p>
+            <a href="">Mettre à jour profil</a>
+        </div>
+        <div class="activity-perso account-company">
+                <h3></h3>
+            <ul>
+                <li>vues de profil</li>
+                <li>Mission acceptés </li>
+                <li>Dérniere client</li>
+                <li>Missions accomplie</li>
+            </ul>
+        </div>
+        <div class="activity-perso account-company">
+        <h3>Une autre section</h3>
+        <ul>
+            <li>Exemple</li>
+            <li>Exemple</li>
+            <li>Exemple</li>
+            <li>Exemple</li>
+        </ul>
+    </div>
+    </div>
+    <div class="col-md-8 content-side ">
+        <div class="block-content notifications account-company">
+            <h3>Notifications missions</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h4>Mission en cours</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h4>Missions terminées</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div class="block-content chiffre-affaire account-company">
+            <h3>Mon chiffre d'affaires</h3>
+                <ul>
+                    <li>Mission terminées</li>
+                    <li>Chiffre d'affraires </li>
+                    <li>Montant des missions en cours</li>
+                    <li>Montant global</li>
+                </ul>
+            
+</div>
+        
+    </div>  {# . content-account-side #}
+</div> {# .row #}
+
+{% endblock %}

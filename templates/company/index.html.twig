@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Skbnk - Chercheur de compétences {% endblock %}
+
+{% block body %}
+
+<section>
+<div class="container inner row">
+    <div class="content-top-company col-md-6">
+        <h2>Skbnk Entreprise</h2>
+            <p>Trouvé le professionnelle de votre choix de façon rapide, facile, et sécurisé</p>
+            <a href="#" class="btn btn-primary btn-lg">Publier mission</a>
+        </div>
+                        <img src="{{ asset('images/image-company.jpg')}}" alt="" class="image-top-company img-fluid col-md-6">
+                            </div>
+                                </section>
+
+
+
+
+<section>
+    <div class="container">
+        <div class="instructions-publication">
+        <ul>
+        <li>
+            <img src="{{ asset('images/pencil.png')}}" alt="" class="img-d-publi" height="40">
+            <h4 class="title-d-publi">Détaillez votre mission</h4>
+            <p class="description-d-publi">Expedita exercitationem odio minima quis pariatur nesciunt, molestias consequatur magnam ea!</p>
+            </li>
+        <li>
+            <img src="{{ asset('images/user.png')}}" alt="" class="img-d-publi" height="40">
+            <h4 class="title-d-publi">Reçoit les meilleurs profils immediatement </h4>
+            <p class="description-d-publi">Lorem ipsum dolor sit amet consectetur adipisicing elit. fuga.</p>
+            </li>
+        <li>
+            <img src="{{ asset('images/heart.png')}}" alt="" class="img-d-publi" height="40">
+            <h4 class="title-d-publi">Sélectionner facilement </h4>
+            <p class="description-d-publi"> Minima ullam commodi excepturi temporibus. Delectus </p>
+            </li>
+        </ul>
+        </div>               
+    </div>
+    </section>
+
+<section>
+    <div class="souscription">
+    <div class="container">
+    <span class="price">10€</span>
+        <div class="action-publi">
+            <p class="text-publi">Publié votre premier mission</p>
+                <a href="#" class="btn btn-primary btn-lg">Publier mission</a>
+                </div>
+            <div class="card-offer">
+        <h4 class="title-offer">Offre de bienvenue</h4>
+    <ul>
+        <li class="list-offer">
+            <img src="{{ asset('images/check.png')}}" height="25" alt="">
+            <div class="description-offer">
+                <h5 class="title-commercial">Votre Mission dans les premiers résultats </h5>
+                    <p>Harum officia voluptatum molestiae </p>
+                        </div>
+        </li>
+        <li class="list-offer">
+            <img src="{{ asset('images/check.png')}}" height="25" alt="">
+            <div class="description-offer">
+                <h5 class="title-commercial">Nombre de contact dispo</h5>
+                    <p> Aut fugiat asperiores animi dolore</p>
+                        </div>
+        </li>
+        <li class="list-offer">
+            <img src="{{ asset('images/check.png')}}" height="25" alt="">
+            <div class="description-offer">
+                <h5 class="title-commercial">15 Job mail par semaine</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur 
+                    </div></p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3> Milliers de Cv's dans notre cvtèque</h3>
+            <div class="bddcv">
+                    <div class="laptop">
+                        <img src="" alt="">
+                    </div>
+                    <div class="advantages">
+                        <div class="content-advan">
+                            <img src="{{ asset('images/loupe.png')}}" height="70px" alt="">
+                            <div class="content-text">
+                                    <h5>Rechcerche dans la cvtèque</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur</p>
+                                    </div>
+                            </div>
+                        <div class="content-advan">
+                                <img src="{{ asset('images/check.png')}}" height="70px" alt="">
+                                <div class="content-text">
+                                    <h5>Vérifier les compétences</h5>
+                                        <p>Harum officia voluptatum molestiae </p>        
+                                        </div>
+                            </div>
+                        <div class="content-advan">
+                                <img src="{{asset('images/euro.png')}}" height="70px" alt="">
+                                <div class="content-text">
+                                    <h5>Payer pour le mission démarrer</h5>
+                                        <p>Harum officia voluptatum molestiae</p>        
+                                        </div>
+                                    <a href="{{ path('app_company_registration')}}" class="btn btn-primary btn-lg">S'inscrire</a>
+                                </div>  
+                            </div> {# .advantages #}
+                        </div>{# .bddcv #}
+                    </div>{# .container #}
+                    <div class="container help ">
+                        <div class="text">
+                        <h3 class="title-help">Vous n'êtes pas seul</h3>
+                        <p class="subtitle-help">Nous vous aidons dans votre procédure de sélection</p>
+                        <p class="description-help">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi, perferendis obcaecati quam enim veritatis voluptate molestias fugiat a suscipit inventore quae.</p>
+                    </div>
+                    <hr>
+                        <div class="call-center">
+                            <img src="{{ asset('images/customer-service.png')}}" alt="" class="img-fluid">
+                        </div>
+            </div>
+                </section>
+
+
+{% endblock %}
