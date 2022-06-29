@@ -3,114 +3,113 @@
 {% block title %}Offreur de compétences - Skbnk{% endblock %}
 
 {% block body %}
-<div class="container inner">
-    <picture class="landing-page-picture">
-        {# <img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class=" col-md-6 img-fluid"> #}
-            </picture>
-        <div class="landing-page-header">
-        <div class="col-md-6">
-            <h1>Titre que défini le concept</h1>
-                <p class="subtitle-landing-header">Choisissez vos mission</p>
-                <p class="subtitle-landing-header">Service sécurisé</p>
-                <p class="subtitle-landing-header">Accompagment expertise</p>
-</div>
-<a href="{{ path('app_competent_registration')}}" class="btn btn-primary btn-lg"> Je Crée mon profil</a>
-        </div>{# .landing-header #}
+<div class="container-fluid">
+    <div class="container-inner">
+        <picture class="compe-page-picture">
+                {# <img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class=" col-md-6 img-fluid"> #}
+        </picture>
+            <div class="compe-page-header">
+                <div class="col-md-6">
+                    <h1 class="title-compe">Titre que défini le concept</h1>
+                        <p class="subtitle-compe-header">Choisissez vos mission</p>
+                        <p class="subtitle-compe-header">Service sécurisé</p>
+                        <p class="subtitle-compe-header">Accompagment expertise</p>
+                        <span class="bt-competent-log"><a href="{{ path('app_competent_registration')}}" class="bt-com-link">Je crée mon profil</a></span>
+                </div>
+                
+            </div>{# .compe-page-header #}
     </div>{# container inner #}
 
-<section>
-    <div class="container">
-    <div class="profile-conditions">
-        <div class="title-conditions">
-            <h2>Comment ça c'est passe, les mission</h2>
-                </div>
+    <section>
+        <div class="profile-conditions">
+                <h4 class="title-conditions">Comment ça c'est passe, les missions</h4>
             <div class="description-conditions">
-                <div class="profile-condition-item">
+                    <div class="profile-condition-item">
                         <img src="{{ asset('images/check.png')}}" height="70px" alt="">
                         <div class="content-text">
-                        <h5>Vérifier les compétences</h5>
-                        <p>Harum officia voluptatum molestiae </p>        
-                        </div>
-                        </div>
+                        <h5 class="title-content-text">Vérifier les compétences</h5>
+                        <p class="descrip-content-text">Harum officia voluptatum molestiae </p>        
+                    </div>
+                </div>
                 <div class="profile-condition-item">
-                        <img src="{{ asset('images/check.png')}}" height="70px" alt="">
+                    <img src="{{ asset('images/check.png')}}" height="70px" alt="">
                         <div class="content-text">
-                        <h5>Vérifier les compétences</h5>
-                        <p>Harum officia voluptatum molestiae </p>        
+                            <h5 class="title-content-text">Vérifier les compétences</h5>
+                            <p class="descrip-content-text">Harum officia voluptatum molestiae </p>        
                         </div>
-                        </div>
+                </div>
                 <div class="profile-condition-item">
-                        <img src="{{ asset('images/check.png')}}" height="70px" alt="">
+                    <img src="{{ asset('images/check.png')}}" height="70px" alt="">
                         <div class="content-text">
-                        <h5>Vérifier les compétences</h5>
-                        <p>Harum officia voluptatum molestiae </p>        
+                            <h5 class="title-content-text">Vérifier les compétences</h5>
+                            <p class="descrip-content-text">Harum officia voluptatum molestiae </p>        
                         </div>    
+                </div>
+            </div>{# .description-condition #}
+                        </div>{# .profile-conditions #}
+                        <img src="{{ asset('images/rh-portrait.jpg')}}" alt="" class="img-fluid rounded">
+
+    </section>
+
+                <section>
+                    <div class="container">   
+                    <h3>Les entreprise cherchent vos compétences</h3>   
+                    <div class="entreprise-a-la-une">
+                        <div><img src="{{asset('images/credit_agricole.png')}}" alt="" class="log-company img-fluid"> </div>
+                        <div> <img src="{{asset('images/Adidas_Logo.svg.png')}}" alt="" class="log-company img-fluid"> </div>
+                        <div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
+                        <div> <img src="{{asset('images/logo-allianz-1.jpg')}}" alt="" class="log-company img-fluid"> </div>
+                        <div> <img src="{{asset('images/logo-microsoft.png')}}" alt="" class="log-company img-fluid"> </div>
+                        <div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
+                    </div>{# .entreprise-a-la-une #}
+
+                    </div>
+                </section>
+
+                <section>
+                    <div class="container">
+                    <div class="profile-services">
+                        <div class="description-services">
+                            <div class="profile-services-item">
+                            <img src="{{ asset('images/create-profile.png')}}" height="70px" alt="">
+                            <div class="content-text">
+                            <h5>Vérifier les compétences</h5>
+                            <p>Harum officia voluptatum molestiae </p>        
+                            </div>
+                            </div>
+                            <div class="profile-services-item">
+                            <img src="{{ asset('images/receipt.png')}}" height="70px" alt="">
+                            <div class="content-text">
+                            <h5>Vérifier les compétences</h5>
+                            <p>Harum officia voluptatum molestiae </p>        
+                            </div>
+                            </div>
+                            <div class="profile-services-item">
+                            <img src="{{ asset('images/on-time.png')}}" height="70px" alt="">
+                            <div class="content-text">
+                            <h5>Vérifier les compétences</h5>
+                            <p>Harum officia voluptatum molestiae </p>        
+                            </div>
+                            </div>
+                            <div class="profile-services-item">
+                            <img src="{{ asset('images/un-salaire.png')}}" height="70px" alt="">
+                            <div class="content-text">
+                            <h5>Vérifier les compétences</h5>
+                            <p>Harum officia voluptatum molestiae </p>        
+                            </div>
+                            </div>
                         </div>
-                    </div>{# .description-condition #}
-                </div>{# .profile-conditions #}
-                <img src="{{ asset('images/rh-portrait.jpg')}}" alt="" class="img-fluid rounded">
+                    </div>
+                    </div>
+                </section>
 
-            </div>{# .container #}
-</section>
-
-<section>
-    <div class="container">   
-    <h3>Les entreprise cherchent vos compétences</h3>   
-    <div class="entreprise-a-la-une">
-        <div><img src="{{asset('images/credit_agricole.png')}}" alt="" class="log-company img-fluid"> </div>
-        <div> <img src="{{asset('images/Adidas_Logo.svg.png')}}" alt="" class="log-company img-fluid"> </div>
-        <div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
-        <div> <img src="{{asset('images/logo-allianz-1.jpg')}}" alt="" class="log-company img-fluid"> </div>
-        <div> <img src="{{asset('images/logo-microsoft.png')}}" alt="" class="log-company img-fluid"> </div>
-        <div> <img src="{{asset('images/total.jpg')}}" alt="" class="log-company img-fluid"> </div>
-    </div>{# .entreprise-a-la-une #}
-
-    </div>
-</section>
-
-<section>
-    <div class="container">
-    <div class="profile-services">
-        <div class="description-services">
-            <div class="profile-services-item">
-            <img src="{{ asset('images/create-profile.png')}}" height="70px" alt="">
-            <div class="content-text">
-            <h5>Vérifier les compétences</h5>
-            <p>Harum officia voluptatum molestiae </p>        
+                <div class="container">
+                <div class="create-profile">
+                <h2>Rejoindre la communauté SkBnK</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt animi facilis.</p>
+                    <span class="bt-competent-log"><a href="{{ path('app_competent_registration')}}" class="bt-com-link">Je crée mon profil</a></span>
+                </div>
             </div>
-            </div>
-            <div class="profile-services-item">
-            <img src="{{ asset('images/receipt.png')}}" height="70px" alt="">
-            <div class="content-text">
-            <h5>Vérifier les compétences</h5>
-            <p>Harum officia voluptatum molestiae </p>        
-            </div>
-            </div>
-            <div class="profile-services-item">
-            <img src="{{ asset('images/on-time.png')}}" height="70px" alt="">
-            <div class="content-text">
-            <h5>Vérifier les compétences</h5>
-            <p>Harum officia voluptatum molestiae </p>        
-            </div>
-            </div>
-            <div class="profile-services-item">
-            <img src="{{ asset('images/un-salaire.png')}}" height="70px" alt="">
-            <div class="content-text">
-            <h5>Vérifier les compétences</h5>
-            <p>Harum officia voluptatum molestiae </p>        
-            </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-
-<div class="container">
-<div class="create-profile">
-<h3>Rejoindre la communauté SkBnK</h3>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt animi facilis.</p>
-    <a href="{{ path('app_competent_registration')}}" class="btn btn-primary btn-lg">Je crée mon profil</a>
-</div>
 </div>
 
 
