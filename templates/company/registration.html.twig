@@ -4,8 +4,12 @@
 
 {% block body %}
 <h2>Chercheur de compétences</h2>
+   {{ form_start(form)}}
+   {{ form_widget(form)}}
+   {{ form_end(form)}}
 
-<h3>Formulaire d'inscription</h3>
+
+{# <h3>Formulaire d'inscription</h3>
 
     <b>NOM</b><br>
     <b>PRENOM</b><br>
@@ -17,7 +21,7 @@
     <b>VALEURS</b><br>
     <b>INTERIM OU PAS</b><br>
     <b>Acepte les termes</b><br>
-    <b>bouton</b><br>
+    <b>bouton</b><br> #}
 
 
 {% endblock %}

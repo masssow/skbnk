@@ -30,6 +30,12 @@ class Representing
     #[ORM\ManyToMany(targetEntity: Company::class, mappedBy: 'representing')]
     private $companies;
 
+    #[ORM\OneToOne(inversedBy: 'representing', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private $user;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $password;
+
     public function __construct()
     {
         $this->companies = new ArrayCollection();
@@ -111,6 +117,30 @@ class Representing
         if ($this->companies->removeElement($company)) {
             $company->removeRepresenting($this);
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
