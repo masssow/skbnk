@@ -1,0 +1,11 @@
+<h1>Skbnk! Validation d'adresse mail</h1>
+
+<p>
+    S'il vous veuillez cliquez sur le lien pour confirmer votre inscription : <br><br>
+    <a href="{{ signedUrl }}">Confirmer mon adresse mail</a>.
+    ce lien expire dans: {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Bravo!
+</p>

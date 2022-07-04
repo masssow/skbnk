@@ -12,8 +12,6 @@
 // =============font=================
         $font-color:#150B3D;
         $font-color-light:#fff;
-      
-
 
 //====================home========================
 $secondary-soft:#FFD6AD;
@@ -209,6 +207,9 @@ flex-wrap: wrap;
 // }
 
 // ====== company ========
+.header-column{
+    display: none;
+}
 .container-inner-c{
     background-size: cover;
     background-repeat: no-repeat;
@@ -305,6 +306,10 @@ text-align: center;
 }.img-d-publi{
     margin: 5px;
 }
+.list-unstyled{
+    margin-top: 100px;
+}
+
 
 
 // ===== competent ============
@@ -358,7 +363,7 @@ text-align: center;
 
 
 footer{
-    // position: absolute;
+    position: absolute;
     // margin-bottom: 0;
     bottom: 0;
     width: 100%;

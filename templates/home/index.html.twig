@@ -6,6 +6,13 @@
 
 {% block body %}
 <div class="container-fluid">
+{% for label, messages in app.flashes(['success', 'warning']) %}
+{% for message in messages %}
+    <div class="flash-{{ label }} alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endfor %}
   <section>
       <div class="header-custom">
           <nav class="navbar bg-light">
