@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competent index{% endblock %}
+
+{% block body %}
+    <h1>Competent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Tarif</th>
+                <th>Experience</th>
+                <th>SectorActivity</th>
+                <th>Formation</th>
+                <th>Diplomes</th>
+                <th>Certification</th>
+                <th>Langues</th>
+                <th>ImageName</th>
+                <th>ImageSize</th>
+                <th>UpdatedAt</th>
+                <th>Job</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for competent in competents %}
+            <tr>
+                <td>{{ competent.id }}</td>
+                <td>{{ competent.email }}</td>
+                <td>{{ competent.roles ? competent.roles|json_encode : '' }}</td>
+                <td>{{ competent.password }}</td>
+                <td>{{ competent.firstName }}</td>
+                <td>{{ competent.lastName }}</td>
+                <td>{{ competent.tarif }}</td>
+                <td>{{ competent.experience }}</td>
+                <td>{{ competent.sectorActivity }}</td>
+                <td>{{ competent.formation }}</td>
+                <td>{{ competent.diplomes }}</td>
+                <td>{{ competent.certification }}</td>
+                <td>{{ competent.langues }}</td>
+                <td>{{ competent.imageName }}</td>
+                <td>{{ competent.imageSize }}</td>
+                <td>{{ competent.updatedAt ? competent.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ competent.Job }}</td>
+                <td>
+                    <a href="{{ path('app_admin_competent_show', {'id': competent.id}) }}">show</a>
+                    <a href="{{ path('app_admin_competent_edit', {'id': competent.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_competent_new') }}">Create new</a>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+<<<<<<< HEAD
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,6 +29,22 @@ class RegistrationController extends AbstractController
 
     #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+=======
+use App\Security\AppAuthenticator;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
+class RegistrationController extends AbstractController
+{
+    #[Route('/inscription', name: 'app_register')]
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+>>>>>>> data
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -35,6 +52,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
+<<<<<<< HEAD
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -59,12 +77,26 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('app_email_verification');
+=======
+            $user->setRoles(['ROLE_USER']);                
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+>>>>>>> data
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
+<<<<<<< HEAD
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
@@ -96,4 +128,6 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('app_home');
     }
+=======
+>>>>>>> data
 }

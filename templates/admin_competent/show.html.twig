@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competent{% endblock %}
+
+{% block body %}
+    <h1>Competent</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ competent.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ competent.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ competent.roles ? competent.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ competent.password }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ competent.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ competent.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ competent.tarif }}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{ competent.experience }}</td>
+            </tr>
+            <tr>
+                <th>SectorActivity</th>
+                <td>{{ competent.sectorActivity }}</td>
+            </tr>
+            <tr>
+                <th>Formation</th>
+                <td>{{ competent.formation }}</td>
+            </tr>
+            <tr>
+                <th>Diplomes</th>
+                <td>{{ competent.diplomes }}</td>
+            </tr>
+            <tr>
+                <th>Certification</th>
+                <td>{{ competent.certification }}</td>
+            </tr>
+            <tr>
+                <th>Langues</th>
+                <td>{{ competent.langues }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ competent.imageName }}</td>
+            </tr>
+            <tr>
+                <th>ImageSize</th>
+                <td>{{ competent.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ competent.updatedAt ? competent.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Job</th>
+                <td>{{ competent.Job }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_competent_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_competent_edit', {'id': competent.id}) }}">edit</a>
+
+    {{ include('admin_competent/_delete_form.html.twig') }}
+{% endblock %}
