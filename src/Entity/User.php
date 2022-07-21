@@ -48,6 +48,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
       return  $this->firstName;
     }
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Representing::class, cascade: ['persist', 'remove'])]
+    private $representing;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +138,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getRepresenting(): ?Representing
+    {
+        return $this->representing;
+    }
+
+    public function setRepresenting(?Representing $representing): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($representing === null && $this->representing !== null) {
+            $this->representing->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($representing !== null && $representing->getUser() !== $this) {
+            $representing->setUser($this);
+        }
+
+        $this->representing = $representing;
 
         return $this;
     }
