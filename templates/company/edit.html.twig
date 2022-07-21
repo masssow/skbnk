@@ -1,0 +1,14 @@
+{% extends 'base-company.html.twig' %}
+{% block title %}Skbnk - Mon compte entreprise {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<div class="col-12 col-md-10">
+<h4>Editer votre entreprise</h4>
+{{form_start(formEditCompany)}}
+    {{form_row(formEditCompany)}}
+<button type="submit" class="btn btn-secondary mb-4">Valider</button>
+
+    {{form_end(formEditCompany)}}
+</div> .container-fluid
+{% endblock %}
