@@ -18,12 +18,19 @@ class City
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Competent::class, inversedBy: 'cities')]
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: Competent::class)]
     private Collection $competent;
 
     public function __construct()
     {
         $this->competent = new ArrayCollection();
+    }
+
+   
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -55,6 +62,7 @@ class City
     {
         if (!$this->competent->contains($competent)) {
             $this->competent[] = $competent;
+            $competent->setCity($this);
         }
 
         return $this;
@@ -62,8 +70,14 @@ class City
 
     public function removeCompetent(Competent $competent): self
     {
-        $this->competent->removeElement($competent);
+        if ($this->competent->removeElement($competent)) {
+            // set the owning side to null (unless already changed)
+            if ($competent->getCity() === $this) {
+                $competent->setCity(null);
+            }
+        }
 
         return $this;
     }
+
 }

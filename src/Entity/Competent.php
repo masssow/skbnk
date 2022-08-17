@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompetentRepository;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\DependencyInjection\Reference;
@@ -16,10 +17,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Vich\Uploadable
  */
 
-class Competent extends User
+class Competent
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
     #[ORM\Column()]
     private ?int $id = null;
+
 
     #[ORM\Column(nullable: true)]
     private ?float $tarif = null;
@@ -51,6 +55,12 @@ class Competent extends User
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'competent')]
+    private ?City $city = null;
+
+    #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'competent')]
+    private Collection $jobs;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
@@ -60,11 +70,8 @@ class Competent extends User
      */
     private $imageFile;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Job = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $city = null;
+    #[ORM\OneToOne(mappedBy: 'competent', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -191,6 +198,45 @@ class Competent extends User
         return $this;
     }
 
+    
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Job>
+     */
+    public function getJobs(): Collection
+    {
+        return $this->jobs;
+    }
+
+    public function addJob(Job $job): self
+    {
+        if (!$this->jobs->contains($job)) {
+            $this->jobs[] = $job;
+            $job->addCompetent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJob(Job $job): self
+    {
+        if ($this->jobs->removeElement($job)) {
+            $job->removeCompetent($this);
+        }
+
+        return $this;
+    }
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -216,29 +262,25 @@ class Competent extends User
         return $this->imageFile;
     }
 
-    public function getJob(): ?string
+    public function getUser(): ?User
     {
-        return $this->Job;
+        return $this->user;
     }
 
-    public function setJob(?string $Job): self
+    public function setUser(?User $user): self
     {
-        $this->Job = $Job;
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setCompetent(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getCompetent() !== $this) {
+            $user->setCompetent($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(?string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-
 }

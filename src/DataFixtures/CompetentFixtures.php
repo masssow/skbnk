@@ -10,15 +10,23 @@ use Doctrine\Persistence\ObjectManager;
 
 class CompetentFixtures extends Fixture
 {
+    public const CAVISTE            = 'Caviste';
+    public const ARBORICULTEUR      = 'Arboriculteur / Arboricultrice';
+    public const ELEVEUR_VOLAILLE   = 'Eléveur volailles';
+    public const BIJOUTIER          = 'Bijoutier / Bijoutière-joallière';
+    public const DESIGNER           = 'Designer / Designeuse automobile';
+    public const AGENT_ASSURANCE    = 'Agent / Agente général d\'assurances';
+    public const ANALISTE_CREDIT    = 'Analiste de credit';
+    public const ANALISTE_FINANCE   = 'Analiste financier';
+    public const ANALISTE_FUSION_A  = 'Analyste fusions acquisitions';
 
     public function load(ObjectManager $manager): void
     {
 
         $date = new DateTimeImmutable();
-        $job = new JobFixtures;
         $competent = new Competent();
         $competent->getId(1);
-        $competent->setCity(CityFixtures::ABLON);
+        $competent->setCity($this->getReference(CityFixtures::ABLON));
         $competent->setLastName('Jane');
         $competent->setFirstName('Cooper');
         $competent->setPassword('pass');
@@ -36,7 +44,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(2);
-        $competent->setCity(CityFixtures::TOULOUSE);
+        $competent->setCity($this->getReference(CityFixtures::BACONNES));
         $competent->setLastName('Wade');
         $competent->setFirstName('Abdoulaye');
         $competent->setPassword('pass');
@@ -54,7 +62,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(3);
-        $competent->setCity(CityFixtures::CACHAN);
+        $competent->setCity($this->getReference(CityFixtures::CACHAN));
         $competent->setLastName('Broolyn');
         $competent->setFirstName('Simmons');
         $competent->setPassword('pass');
@@ -72,7 +80,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(4);
-        $competent->setCity(CityFixtures::CAEN);
+        $competent->setCity($this->getReference(CityFixtures::LILLE));
         $competent->setLastName('Jenny');
         $competent->setFirstName('Lopez');
         $competent->setPassword('pass');
@@ -89,7 +97,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(5);
-        $competent->setCity(CityFixtures::LYON);
+        $competent->setCity($this->getReference(CityFixtures::PARIS));
         $competent->setLastName('Douma');
         $competent->setFirstName('Faye');
         $competent->setPassword('pass');
@@ -107,7 +115,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(6);
-        $competent->setCity(CityFixtures::ECHENAY);
+        $competent->setCity($this->getReference(CityFixtures::PARIS));
         $competent->setLastName('Robert');
         $competent->setFirstName('Fox');
         $competent->setPassword('pass');
@@ -125,7 +133,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(7);
-        $competent->setCity(CityFixtures::LILLE);
+        $competent->setCity($this->getReference(CityFixtures::LILLE));
         $competent->setLastName('Guy');
         $competent->setFirstName('Hawkins');
         $competent->setPassword('pass');
@@ -143,7 +151,7 @@ class CompetentFixtures extends Fixture
 
         $competent = new Competent();
         $competent->getId(8);
-        $competent->setCity(CityFixtures::PARIS);
+        $competent->setCity($this->getReference(CityFixtures::PARIS));
         $competent->setLastName('Leslie');
         $competent->setFirstName('Alexandre');
         $competent->setPassword('pass');

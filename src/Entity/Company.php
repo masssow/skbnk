@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
-class Company extends User
+class Company 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -34,6 +34,14 @@ class Company extends User
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Country = null;
+
+    #[ORM\ManyToOne(inversedBy: 'company')]
+    private ?User $user = null;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +128,18 @@ class Company extends User
     public function setCountry(?string $Country): self
     {
         $this->Country = $Country;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

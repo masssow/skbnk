@@ -18,14 +18,22 @@ class Job
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'jobs')]
-    private $subCategory;
+    #[ORM\ManyToOne(inversedBy: 'job')]
+    private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Competent::class, inversedBy: 'jobs')]
+    private Collection $competent;
+
+    public function __construct()
+    {
+        $this->competent = new ArrayCollection();
+    }
 
 
-    // public function __toString()
-    // {
-    //     return $this->getName();
-    // }
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     public function getId(): ?int
     {
@@ -44,14 +52,38 @@ class Job
         return $this;
     }
 
-    public function getSubCategory(): ?SubCategory
+    public function getCategory(): ?Category
     {
-        return $this->subCategory;
+        return $this->category;
     }
 
-    public function setSubCategory(?SubCategory $subCategory): self
+    public function setCategory(?Category $category): self
     {
-        $this->subCategory = $subCategory;
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Competent>
+     */
+    public function getCompetent(): Collection
+    {
+        return $this->competent;
+    }
+
+    public function addCompetent(Competent $competent): self
+    {
+        if (!$this->competent->contains($competent)) {
+            $this->competent[] = $competent;
+        }
+
+        return $this;
+    }
+
+    public function removeCompetent(Competent $competent): self
+    {
+        $this->competent->removeElement($competent);
 
         return $this;
     }

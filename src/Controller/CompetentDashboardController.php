@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CompetentDashboardController extends AbstractController
 {
-    #[Route('/mon-compte/dashboard', name: 'app_competent_dashboard')]
+    #[Route('/competent/dashboard', name: 'app_competent_dashboard')]
     public function index(): Response
     {
         return $this->render('competent/dashboard.html.twig', [

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Job;
+use App\Entity\Category;
 use App\Entity\Competent;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -23,65 +24,124 @@ class JobFixtures extends Fixture
         $job = new Job();
         $job->getId(1);
         $job->setName('caviste');
-        $job->getSubCategory(SubCategorieFixtures::VITICULTURE);
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(2);
         $job->setName('Arboriculteur / Arboricultrice');
-        $job->getSubCategory(SubCategorieFixtures::AGRICULTURE);
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(3);
         $job->setName('Eléveur volailles');
-        $job->getSubCategory(SubCategorieFixtures::ELEVAGE);
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(4);
         $job->setName('Bijoutier / Bijoutière-joallière');
-        $job->getSubCategory(SubCategorieFixtures::ART);
+        $job->setCategory($this->getReference(Categoryfixtures::ARTDESINGMODE));
         $manager->persist($job);
 
         
         $job = new Job();
         $job->getId(4);
         $job->setName('Designer / Designeuse automobile');
-        $job->getSubCategory(SubCategorieFixtures::DESIGN);
+        $job->setCategory($this->getReference(Categoryfixtures::ARTDESINGMODE));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(5);
         $job->setName('Designer / Designeuse de produit de lunetterie');
-        $job->getSubCategory(SubCategorieFixtures::DESIGN);
+        $job->setCategory($this->getReference(Categoryfixtures::ARTDESINGMODE));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(6);
         $job->setName('Agent / Agente général d\'assurances');
-        $job->getSubCategory(SubCategorieFixtures::ASSURANCE);
+        $job->setCategory($this->getReference(Categoryfixtures::BANQUEFINANCEASSU));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(7);
         $job->setName('Analyste de crédit');
-        $job->getSubCategory(SubCategorieFixtures::BANQUE);
+        $job->setCategory($this->getReference(Categoryfixtures::BANQUEFINANCEASSU));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(8);
         $job->setName('Analyste financier / financière');
-        $job->getSubCategory(SubCategorieFixtures::FINANCE);
+        $job->setCategory($this->getReference(Categoryfixtures::BANQUEFINANCEASSU));
         $manager->persist($job);
 
         $job = new Job();
         $job->getId(9 );
         $job->setName('Analyste fusions acquisitions');
-        $job->getSubCategory(SubCategorieFixtures::BANQUE);
+        $job->setCategory($this->getReference(Categoryfixtures::BANQUEFINANCEASSU));
         $manager->persist($job);
         
+        $job = new Job();
+        $job->getId(10);
+        $job->setName('Eleveur de Bobines');
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
+        $manager->persist($job);
 
+        $job = new Job();
+        $job->getId(11);
+        $job->setName('Aquaculteur');
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(12);
+        $job->setName('Eléveur volailles');
+        $job->setCategory($this->getReference(Categoryfixtures::AGRICULTURE));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(13);
+        $job->setName('Céramiste');
+        $job->setCategory($this->getReference(Categoryfixtures::ARTDESINGMODE));
+        $manager->persist($job);
+
+        
+        $job = new Job();
+        $job->getId(14);
+        $job->setName('Coutelier');
+        $job->setCategory($this->getReference(Categoryfixtures::ARTDESINGMODE));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(15);
+        $job->setName('Architecte Big Data');
+        $job->setCategory($this->getReference(Categoryfixtures::INFORMATIQUEWEBRESEAUX));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(16);
+        $job->setName('Chef de projet informatique');
+        $job->setCategory($this->getReference(Categoryfixtures::INFORMATIQUEWEBRESEAUX));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(17);
+        $job->setName('consultant CyberSécurité');
+        $job->setCategory($this->getReference(Categoryfixtures::INFORMATIQUEWEBRESEAUX));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(18);
+        $job->setName('consultant SEO');
+        $job->setCategory($this->getReference(Categoryfixtures::INFORMATIQUEWEBRESEAUX));
+        $manager->persist($job);
+
+        $job = new Job();
+        $job->getId(19 );
+        $job->setName('Analyste KYC (Know your costumer)');
+        $job->setCategory($this->getReference(Categoryfixtures::INFORMATIQUEWEBRESEAUX));
+        $manager->persist($job);
         $manager->flush();
     }
 }

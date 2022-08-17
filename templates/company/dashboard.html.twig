@@ -16,26 +16,37 @@
 <div class="row">
     <div class="col-md-2 info-side ">
         <div class="info-perso account-company">
-            <b>Vos informations</b>
-            <p>Metier principal</p>
+            <h3>Votre entreprise</h3>
+                {{dump(user.company)}}
+            {# <p>{{app.user.company.name}}</p> #}
             <a href="">Mettre à jour profil</a>
         </div>
         <div class="activity-perso account-company">
-                <h3></h3>
+                <h3>Votre activité</h3>
             <ul>
-                <li>vues de profil</li>
-                <li>Mission acceptés </li>
-                <li>Dérniere client</li>
-                <li>Missions accomplie</li>
+                <li>Créer une mission</li>
+                <li>Missions en cours </li>
+                <li>Competent favoris</li>
+                <li>Missions términées</li>
             </ul>
         </div>
         <div class="activity-perso account-company">
-        <h3>Une autre section</h3>
+        <h3>Nouveau projet</h3>
         <ul>
-            <li>Exemple</li>
-            <li>Exemple</li>
-            <li>Exemple</li>
-            <li>Exemple</li>
+            <li>Chercher un competent</li>
+            <li>Definir projet</li>
+            <li>Créer un contrat</li>
+            <li>Planing</li>
+        </ul>
+    </div>
+
+    <div class="activity-perso account-company">
+        <h3>Vos chiffres</h3>
+        <ul>
+            <li>Coûts mission</li>
+            <li>Vos dérnieres contrats</li>
+            <li></li>
+            <li></li>
         </ul>
     </div>
     </div>

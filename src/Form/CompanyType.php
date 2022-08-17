@@ -18,7 +18,7 @@ class CompanyType extends AbstractType
             ->add('Activity')
             ->add('siret')
             ->add('description')
-            // ->add('user')
+            ->add('Country')
         ;
     }
 
