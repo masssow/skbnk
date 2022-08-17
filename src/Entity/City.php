@@ -12,18 +12,25 @@ class City
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Competent::class, mappedBy: 'city')]
-    private $competents;
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: Competent::class)]
+    private Collection $competent;
 
     public function __construct()
     {
-        $this->competents = new ArrayCollection();
+        $this->competent = new ArrayCollection();
+    }
+
+   
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -46,16 +53,16 @@ class City
     /**
      * @return Collection<int, Competent>
      */
-    public function getCompetents(): Collection
+    public function getCompetent(): Collection
     {
-        return $this->competents;
+        return $this->competent;
     }
 
     public function addCompetent(Competent $competent): self
     {
-        if (!$this->competents->contains($competent)) {
-            $this->competents[] = $competent;
-            $competent->addCity($this);
+        if (!$this->competent->contains($competent)) {
+            $this->competent[] = $competent;
+            $competent->setCity($this);
         }
 
         return $this;
@@ -63,10 +70,14 @@ class City
 
     public function removeCompetent(Competent $competent): self
     {
-        if ($this->competents->removeElement($competent)) {
-            $competent->removeCity($this);
+        if ($this->competent->removeElement($competent)) {
+            // set the owning side to null (unless already changed)
+            if ($competent->getCity() === $this) {
+                $competent->setCity(null);
+            }
         }
 
         return $this;
     }
+
 }

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Skbnk - S'inscrire {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<h2>Chercheur de compétences</h2>
+
+<h3>Votre entreprise, merci!</h3>
+   
+    {% for company in company %}
+    
+    <h4>{{company.name}}</h4>
+        <div>{{company.siret}}</div>
+        <div>{{company.city}}</div>
+        <div>{{company.sizeOfCompany}}</div>
+        <div>{{company.activity}}</div>
+        <a href="{{ path('app_company_edit', { 'id' : company.id}) }}"><i class="fas fa-pencil-alt"></i></a> | <a href="{{ path('app_company_remove', { 'id' : company.id}) }}"><i class="fas fa-trash-alt"></i></a>
+
+    {% endfor %}
+
+    <a href="{{ path('app_company_add')}}"><button type="" class="btn btn-secondary mb-4">Je crée mon entreprise</button></a>
+</div>
+
+
+
+{% endblock %}

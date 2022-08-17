@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SkBnK - Banque de compétences{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+
+<section>
+    <div class="container inner row">
+        <div class="content-top-company col-md-6">
+            <h2>Bienvenue sur notre banque de compétenes</h2>
+            <p>Résultat/s de votre recherche</p>
+        </div>
+ 
+                 
+
+            {# <nav class="navbar bg-light">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search" method="get">  
+                            <input class="form-control me-2" type="search" placeholder="data analyst, java..etc" name="c-value">
+                            <input class="form-control me-2" type="search" placeholder="Localisation" name="c-value">  
+                        </form>
+                    </div>
+            </nav>  #}
+    </div>
+</section>
+
+<div class="row inner-container">
+            <div class="col-md-2 search-side">
+            {{form_start(form)}}
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            {{form_end(form)}}
+                       
+                {# <h2>filtrer votre recherche</h2>
+                <div class="filter-job-type">
+                    <h4>Secteur</h4>
+                    <select class="form-select" aria-label="Default select example">
+                    {% for category in category %}
+                    {# <option selected></option> 
+                    <option value="1">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>      
+                <div class="filter-job-location">
+                        <h4>Localisation</h4>
+                        <select class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="1">Paris</option>
+                        <option value="2">Toulouse</option>
+                        <option value="3">Marseille</option>
+                        </select>
+                </div>
+                <div class="filter-job-price">
+                        <h4>Prix journaliére</h4>
+                        <select class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="1">TJ max. 400</option>
+                        <option value="2">TJ max. 200</option>
+                        <option value="3">TJ min. 100</option>
+                        </select>
+                </div>
+                <div class="filter-job-date"></div> #}
+            </div>
+        <div class="col-md-10 content-side">
+     <section>
+        <div class="container">
+            <div class=" banque-job">
+                    <div class="heading-banque-job">
+
+                        <h2>Competents par métier</h2>
+                    </div>
+                        
+                <div class="row inner-container-card-job">
+                        {% for competent in competent %}
+                    <div class="col-md-4 card-banque-job">{{competent.firstName}} <br> <b>{{competent.job}}</b><img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </div>
+                        {% endfor %}
+                </div>
+            </div>{# .row banque-job #}
+        </div>
+    </section>
+    {#<section>
+        <div class="container">
+            <div class=" banque-competent">
+                    <div class="heading-banque-competent">
+                        <h2>Notre Banque de compétences</h2>
+                    </div>
+                <div class="row inner-container-card-job">
+                        {% for competent in competent %}
+                        <div class="card" style="width: 18rem;">
+                    <h5 class="card-title">{{competent.firstName}} {{competent.lastName}}</h5>
+                        <img src="{{ asset('images/competent/' ~ competent.imageName)}}" class="card-img-top" alt="{{competent.firstName}}">
+                        <div class="card-body">
+                            <div><strong>{{competent.job}}</strong></div>
+                            <div class="metier-competent">{{competent.diplomes}}</div>
+                            <div class="card-text">{{competent.city}}</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                        {% endfor %}
+                </div>
+            </div>{# .row banque-job 
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class=" banque-location">
+                <div class="heading-banque-location">
+                    <h2>Trouver un competent près de chez vous</h2>
+                </div>
+                <div class="row inner-container-card-location">
+                    <div class="col-md-6 card-banque-location">Juridique<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </div>
+                    <div class="col-md-6 card-banque-location">Marketing<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </div>
+                    <div class="col-md-6 card-banque-location">Logistique<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </div>
+                    <div class="col-md-6 card-banque-location">Digital<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </div>
+                </div>
+            </div>{# .row banque-location 
+        </div>
+    </section> #}
+
+                <a href="#" class="btn btn-primary btn-lg">Publier mission</a>
+            
+        </div>
+            <div class="col-md-4 search-side">
+        
+            </div>
+
+</div> {# .inner-container #}
+</div>
+
+{% endblock %}

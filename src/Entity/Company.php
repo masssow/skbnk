@@ -3,85 +3,49 @@
 namespace App\Entity;
 
 use App\Repository\CompanyRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
-class Company
+class Company 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Siret;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    #[ORM\Column(type: 'float')]
-    private $taille;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $sizeOfCompany = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $email;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Activity = null;
 
-    #[ORM\Column(type: 'text')]
-    private $adresse;
+    #[ORM\Column(length: 255)]
+    private ?string $siret = null;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $telephone;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $city;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Country = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    private $description;
+    #[ORM\ManyToOne(inversedBy: 'company')]
+    private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Mission::class)]
-    private $mission;
-
-    #[ORM\ManyToMany(targetEntity: Representing::class, inversedBy: 'companies')]
-    private $representing;
-
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Project::class)]
-    private $project;
-
-    public function __construct()
+    public function __toString()
     {
-        $this->mission = new ArrayCollection();
-        $this->representing = new ArrayCollection();
-        $this->project = new ArrayCollection();
+        return $this->name;
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSiret(): ?string
-    {
-        return $this->Siret;
-    }
-
-    public function setSiret(string $Siret): self
-    {
-        $this->Siret = $Siret;
-
-        return $this;
-    }
-
-    public function getTaille(): ?float
-    {
-        return $this->taille;
-    }
-
-    public function setTaille(float $taille): self
-    {
-        $this->taille = $taille;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -96,38 +60,14 @@ class Company
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getSizeOfCompany(): ?string
     {
-        return $this->email;
+        return $this->sizeOfCompany;
     }
 
-    public function setEmail(string $email): self
+    public function setSizeOfCompany(?string $sizeOfCompany): self
     {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(?string $telephone): self
-    {
-        $this->telephone = $telephone;
+        $this->sizeOfCompany = $sizeOfCompany;
 
         return $this;
     }
@@ -144,99 +84,64 @@ class Company
         return $this;
     }
 
+    public function getActivity(): ?string
+    {
+        return $this->Activity;
+    }
+
+    public function setActivity(?string $Activity): self
+    {
+        $this->Activity = $Activity;
+
+        return $this;
+    }
+
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    public function setSiret(string $siret): self
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Mission>
-     */
-    public function getMission(): Collection
+    public function getCountry(): ?string
     {
-        return $this->mission;
+        return $this->Country;
     }
 
-    public function addMission(Mission $mission): self
+    public function setCountry(?string $Country): self
     {
-        if (!$this->mission->contains($mission)) {
-            $this->mission[] = $mission;
-            $mission->setCompany($this);
-        }
+        $this->Country = $Country;
 
         return $this;
     }
 
-    public function removeMission(Mission $mission): self
+    public function getUser(): ?User
     {
-        if ($this->mission->removeElement($mission)) {
-            // set the owning side to null (unless already changed)
-            if ($mission->getCompany() === $this) {
-                $mission->setCompany(null);
-            }
-        }
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Representing>
-     */
-    public function getRepresenting(): Collection
-    {
-        return $this->representing;
-    }
-
-    public function addRepresenting(Representing $representing): self
-    {
-        if (!$this->representing->contains($representing)) {
-            $this->representing[] = $representing;
-        }
-
-        return $this;
-    }
-
-    public function removeRepresenting(Representing $representing): self
-    {
-        $this->representing->removeElement($representing);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getProject(): Collection
-    {
-        return $this->project;
-    }
-
-    public function addProject(Project $project): self
-    {
-        if (!$this->project->contains($project)) {
-            $this->project[] = $project;
-            $project->setCompany($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->project->removeElement($project)) {
-            // set the owning side to null (unless already changed)
-            if ($project->getCompany() === $this) {
-                $project->setCompany(null);
-            }
-        }
-
-        return $this;
-    }
 }

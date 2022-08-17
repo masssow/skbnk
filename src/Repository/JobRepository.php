@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Job;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Search;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Job>
@@ -38,6 +39,35 @@ class JobRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+    * @return Job[] Returns an array job objects
+    */
+    public function findWithFilter(Search $search)
+    {
+       
+       $query = $this
+        ->createQueryBuilder('j')
+        ->select('c', 'j')
+        ->join('j.category', 'c');
+       
+
+        if(!empty($search->categories)){
+            $query = $query
+            ->andWhere('c.id IN (:categories)')
+        ->setParameter('categories', $search->categories);
+        }
+
+        if(!empty($search->string)){
+            $query = $query
+            ->andWhere('j.name LIKE :string')
+        ->setParameter('string', "%{$search->string}%");
+        }
+        
+    
+        return $query->getQuery()->getResult();
+    }
+
 
 //    /**
 //     * @return Job[] Returns an array of Job objects

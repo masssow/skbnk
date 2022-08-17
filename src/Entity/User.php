@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -14,26 +16,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private $email;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-    #[ORM\Column(type: 'json')]
-    private $roles = [];
+    #[ORM\Column]
+    private array $roles = [];
 
-    #[ORM\Column(type: 'string')]
-    private $password;
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $firstName;
+    #[ORM\Column(length: 255)]
+    private ?string $firstName = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $lastName;
+    #[ORM\Column(length: 255)]
+    private ?string $lastName = null;
 
-    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Representing::class, cascade: ['persist', 'remove'])]
-    private $representing;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Company::class)]
+    private Collection $company;
+
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Competent $competent = null;
+
+    public function __construct()
+    {
+        $this->company = new ArrayCollection();
+    }
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
@@ -132,24 +145,44 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRepresenting(): ?Representing
+    /**
+     * @return Collection<int, Company>
+     */
+    public function getCompany(): Collection
     {
-        return $this->representing;
+        return $this->company;
     }
 
-    public function setRepresenting(?Representing $representing): self
+    public function addCompany(Company $company): self
     {
-        // unset the owning side of the relation if necessary
-        if ($representing === null && $this->representing !== null) {
-            $this->representing->setUser(null);
+        if (!$this->company->contains($company)) {
+            $this->company->add($company);
+            $company->setUser($this);
         }
 
-        // set the owning side of the relation if necessary
-        if ($representing !== null && $representing->getUser() !== $this) {
-            $representing->setUser($this);
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->company->removeElement($company)) {
+            // set the owning side to null (unless already changed)
+            if ($company->getUser() === $this) {
+                $company->setUser(null);
+            }
         }
 
-        $this->representing = $representing;
+        return $this;
+    }
+
+    public function getCompetent(): ?Competent
+    {
+        return $this->competent;
+    }
+
+    public function setCompetent(?Competent $competent): self
+    {
+        $this->competent = $competent;
 
         return $this;
     }

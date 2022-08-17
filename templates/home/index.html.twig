@@ -85,15 +85,13 @@
 
           </section> 
           <section>
+            {# {{dump(category)}} #}
               <div class=" categorie-metier">
                   <h2>Secteurs d'activité</h2>
-                  <div class="job-family">Tech</div>
-                  <div class="job-family">insdustrie</div>
-                  <div class="job-family">Santé</div>
-                  <div class="job-family">Digital</div>
-                  <div class="job-family">Bussines</div>
-                  <div class="job-family">Data</div>
+                    {% for category in category %}
+                  <div class="job-family">{{category.name}}</div>
               </div>
+            {% endfor %}
           </section>
 
           <section>

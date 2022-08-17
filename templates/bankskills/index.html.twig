@@ -4,6 +4,7 @@
 
 
 {% block body %}
+<div class="container-fluid">
 
 <section>
     <div class="container inner row">
@@ -11,31 +12,37 @@
             <h2>Bienvenue sur notre banque de compétenes</h2>
             <p>Trouvé le professionnelle de votre choix de façon rapide, facile, et sécurisé</p>
         </div>
+ 
+        
+                   
+{# 
             <nav class="navbar bg-light">
                     <div class="container-fluid">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="data analyst, java..etc" aria-label="Search">
-                            <input class="form-control me-2" type="search" placeholder="Localisation " aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <form class="d-flex" role="search" method="get">  
+                            <input class="form-control me-2" type="search" placeholder="data analyst, java..etc" name="c-value">
+                            <input class="form-control me-2" type="search" placeholder="Localisation" name="c-value">  
                         </form>
                     </div>
-            </nav>
-    </div>
+            </nav> 
+    </div> #}
 </section>
 
 <div class="row inner-container">
             <div class="col-md-2 search-side">
-                <h2>filtrer votre recherche</h2>
-
+            {{form_start(form)}}
+            
+            {{form_end(form)}}
+                       
+                {# <h2>filtrer votre recherche</h2>
                 <div class="filter-job-type">
                     <h4>Secteur</h4>
                     <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">Juridique</option>
-                    <option value="2">Logistique</option>
-                    <option value="3">Digital</option>
+                    {% for category in category %}
+                    {# <option selected></option> 
+                    <option value="1">{{category.name}}</option>
+                        {% endfor %}
                     </select>
-                </div>
+                </div>      
                 <div class="filter-job-location">
                         <h4>Localisation</h4>
                         <select class="form-select" aria-label="Default select example">
@@ -54,7 +61,7 @@
                         <option value="3">TJ min. 100</option>
                         </select>
                 </div>
-                <div class="filter-job-date"></div>
+                <div class="filter-job-date"></div> #}
             </div>
         <div class="col-md-10 content-side">
     <section>
@@ -63,20 +70,51 @@
                     <div class="heading-banque-job">
                         <h2>Competents par métier</h2>
                     </div>
+                        
                 <div class="row inner-container-card-job">
-                    <div class="col-md-6 card-banque-job">Juridique<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    {% if job | length > 0 %}
+                        {% for job in job %}
+                    <div class="col-md-4 card-banque-job">
+                    <a href="">
+                        <div>{{job.name}}</div> <br> 
+                        <b>{{job.category}}</b>
+                        <img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
+                    </a>
+
                     </div>
-                    <div class="col-md-6 card-banque-job">Marketing<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
-                    </div>
-                    <div class="col-md-6 card-banque-job">Logistique<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
-                    </div>
-                    <div class="col-md-6 card-banque-job">Digital<img src="{{ asset('images/christina-morillo.jpg')}}" alt="" class="img-fluid picture-card-banque">
-                    </div>
+                        {% endfor %}
+
+                        {% else %}
+                         <div> Aucun résultats pour votre recherche, assurer vous d'avoir sélectionner une categorie.
+                        </div> 
+                    {% endif %}
                 </div>
             </div>{# .row banque-job #}
         </div>
     </section>
-
+    <section>
+        <div class="container">
+            <div class=" banque-competent">
+                    <div class="heading-banque-competent">
+                        <h2>Notre Banque de compétences</h2>
+                    </div>
+                <div class="row inner-container-card-job">
+                        {% for competent in competent %}
+                        <div class="card" style="width: 18rem;">
+                    <h5 class="card-title">{{competent.firstName}} {{competent.lastName}}</h5>
+                        <img src="{{ asset('images/competent/' ~ competent.imageName)}}" class="card-img-top" alt="{{competent.firstName}}">
+                        <div class="card-body">
+                            {# <div><strong>{{competent.job}}</strong></div> #}
+                            <div class="metier-competent">{{competent.diplomes}}</div>
+                            <div class="card-text">{{competent.city}}</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                        {% endfor %}
+                </div>
+            </div>{# .row banque-job #}
+        </div>
+    </section>
     <section>
         <div class="container">
             <div class=" banque-location">
@@ -105,6 +143,6 @@
             </div>
 
 </div> {# .inner-container #}
-                
+</div>
 
 {% endblock %}

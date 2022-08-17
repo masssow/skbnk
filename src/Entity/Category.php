@@ -18,12 +18,17 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: SubCategory::class)]
-    private $SubCategory;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Job::class)]
+    private Collection $job;
 
     public function __construct()
     {
-        $this->SubCategory = new ArrayCollection();
+        $this->job = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -44,32 +49,33 @@ class Category
     }
 
     /**
-     * @return Collection<int, SubCategory>
+     * @return Collection<int, Job>
      */
-    public function getSubCategory(): Collection
+    public function getJob(): Collection
     {
-        return $this->SubCategory;
+        return $this->job;
     }
 
-    public function addSubCategory(SubCategory $subCategory): self
+    public function addJob(Job $job): self
     {
-        if (!$this->SubCategory->contains($subCategory)) {
-            $this->SubCategory[] = $subCategory;
-            $subCategory->setCategory($this);
+        if (!$this->job->contains($job)) {
+            $this->job[] = $job;
+            $job->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeSubCategory(SubCategory $subCategory): self
+    public function removeJob(Job $job): self
     {
-        if ($this->SubCategory->removeElement($subCategory)) {
+        if ($this->job->removeElement($job)) {
             // set the owning side to null (unless already changed)
-            if ($subCategory->getCategory() === $this) {
-                $subCategory->setCategory(null);
+            if ($job->getCategory() === $this) {
+                $job->setCategory(null);
             }
         }
 
         return $this;
     }
+
 }
